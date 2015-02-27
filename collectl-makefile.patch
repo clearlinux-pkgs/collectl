@@ -1,0 +1,10 @@
+--- collectl-3.7.4/Makefile	1969-12-31 18:00:00.000000000 -0600
++++ collectl-3.7.4a/Makefile	2015-02-09 14:14:07.354219881 -0600
+@@ -0,0 +1,7 @@
++all: NOTHING_TO_BUILD
++
++NOTHING_TO_BUILD:
++	@echo "nothing to build"
++
++install:
++	. ./INSTALL

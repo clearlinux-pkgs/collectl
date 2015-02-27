@@ -1,0 +1,10 @@
+[Unit]
+Description=Collectl is a light-weight performance monitoring tool capable of reporting interactively as well as logging to disk
+After=syslog.target network.target
+
+[Service]
+PIDFile=/var/run/collectl.pid
+ExecStart=/usr/bin/collectl -D /usr/share/collectl/collectl.conf
+
+[Install]
+WantedBy=multi-user.target
