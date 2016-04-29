@@ -4,7 +4,7 @@
 #
 Name     : collectl
 Version  : 4.0.4
-Release  : 9
+Release  : 10
 URL      : http://downloads.sourceforge.net/collectl/collectl-4.0.4.src.tar.gz
 Source0  : http://downloads.sourceforge.net/collectl/collectl-4.0.4.src.tar.gz
 Source1  : collectl.service
