@@ -4,9 +4,9 @@
 #
 Name     : collectl
 Version  : 4.1.0
-Release  : 13
-URL      : http://downloads.sourceforge.net/collectl/collectl-4.1.0.src.tar.gz
-Source0  : http://downloads.sourceforge.net/collectl/collectl-4.1.0.src.tar.gz
+Release  : 14
+URL      : https://sourceforge.net/projects/collectl/files/collectl/collectl-4.1.0/collectl-4.1.0.src.tar.gz
+Source0  : https://sourceforge.net/projects/collectl/files/collectl/collectl-4.1.0/collectl-4.1.0.src.tar.gz
 Source1  : collectl.service
 Summary  : No detailed summary available
 Group    : Development/Tools
@@ -64,9 +64,11 @@ doc components for the collectl package.
 
 %build
 export LANG=C
+export SOURCE_DATE_EPOCH=1489102490
 make V=1  %{?_smp_mflags}
 
 %install
+export SOURCE_DATE_EPOCH=1489102490
 rm -rf %{buildroot}
 %make_install
 mkdir -p %{buildroot}/usr/lib/systemd/system
