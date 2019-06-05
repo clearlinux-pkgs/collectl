@@ -4,7 +4,7 @@
 #
 Name     : collectl
 Version  : 4.3.1
-Release  : 22
+Release  : 23
 URL      : https://sourceforge.net/projects/collectl/files/collectl/collectl-4.3.1/collectl-4.3.1.src.tar.gz
 Source0  : https://sourceforge.net/projects/collectl/files/collectl/collectl-4.3.1/collectl-4.3.1.src.tar.gz
 Source1  : collectl.service
