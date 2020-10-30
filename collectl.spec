@@ -4,7 +4,7 @@
 #
 Name     : collectl
 Version  : 4.3.1
-Release  : 23
+Release  : 24
 URL      : https://sourceforge.net/projects/collectl/files/collectl/collectl-4.3.1/collectl-4.3.1.src.tar.gz
 Source0  : https://sourceforge.net/projects/collectl/files/collectl/collectl-4.3.1/collectl-4.3.1.src.tar.gz
 Source1  : collectl.service
@@ -30,7 +30,6 @@ Summary: bin components for the collectl package.
 Group: Binaries
 Requires: collectl-data = %{version}-%{release}
 Requires: collectl-license = %{version}-%{release}
-Requires: collectl-man = %{version}-%{release}
 Requires: collectl-services = %{version}-%{release}
 
 %description bin
@@ -80,21 +79,31 @@ services components for the collectl package.
 
 %prep
 %setup -q -n collectl-4.3.1
+cd %{_builddir}/collectl-4.3.1
 %patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1541092438
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1604084386
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 make  %{?_smp_mflags}
 
+
 %install
-export SOURCE_DATE_EPOCH=1541092438
+export SOURCE_DATE_EPOCH=1604084386
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/collectl
-cp COPYING %{buildroot}/usr/share/package-licenses/collectl/COPYING
+cp %{_builddir}/collectl-4.3.1/COPYING %{buildroot}/usr/share/package-licenses/collectl/06b0317b87e80c20ce780dea1d5f207fd95e90f4
 %make_install
 mkdir -p %{buildroot}/usr/lib/systemd/system
 install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/systemd/system/collectl.service
@@ -129,7 +138,7 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/systemd/system/collectl.service
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/collectl/COPYING
+/usr/share/package-licenses/collectl/06b0317b87e80c20ce780dea1d5f207fd95e90f4
 
 %files man
 %defattr(0644,root,root,0755)
